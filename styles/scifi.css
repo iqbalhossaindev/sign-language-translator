@@ -1,0 +1,321 @@
+/* ═══════════════════════════════════════════════════
+   SignAI — Sci-Fi Design Upgrade
+   ═══════════════════════════════════════════════════ */
+
+/* ─── SCI-FI BODY OVERLAY ───────────────────────── */
+/* Subtle CRT scanline texture over whole page */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 229, 255, 0.012) 2px,
+    rgba(0, 229, 255, 0.012) 4px
+  );
+}
+
+/* Hex grid overlay on background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(0,229,255,0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(124,58,237,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(59,130,246,0.02) 0%, transparent 70%);
+}
+
+/* ─── KESTFORD NAV BUTTON ───────────────────────── */
+.nav-kestford-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,229,255,0.25);
+  background: linear-gradient(135deg, rgba(0,229,255,0.06), rgba(124,58,237,0.08));
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  transition: all 0.25s var(--ease-out-expo);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-kestford-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,229,255,0.0), rgba(0,229,255,0.12));
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.nav-kestford-btn:hover::before { opacity: 1; }
+
+.nav-kestford-btn:hover {
+  border-color: rgba(0,229,255,0.55);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0,229,255,0.18), inset 0 0 12px rgba(0,229,255,0.06);
+  transform: translateY(-1px);
+}
+
+.nav-kestford-icon {
+  font-size: 14px;
+  color: var(--accent-cyan);
+  line-height: 1;
+  animation: hexSpin 8s linear infinite;
+}
+
+@keyframes hexSpin {
+  0%   { transform: rotate(0deg);   }
+  100% { transform: rotate(360deg); }
+}
+
+.nav-kestford-label { position: relative; z-index: 1; }
+
+.nav-kestford-arrow {
+  font-size: 13px;
+  transition: transform 0.2s;
+  color: var(--accent-cyan);
+}
+
+.nav-kestford-btn:hover .nav-kestford-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* ─── NAV STATUS REFINEMENT ─────────────────────── */
+.nav-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── UPGRADED GLASS CARDS ──────────────────────── */
+.glass-card {
+  position: relative;
+}
+
+/* Sci-fi border shimmer on cards */
+.glass-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, rgba(0,229,255,0.06), transparent 40%, rgba(124,58,237,0.06)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ─── SCI-FI HERO TITLE ─────────────────────────── */
+.hero-title-line1,
+.hero-title-line2 {
+  position: relative;
+}
+
+/* Glitch flicker on hover */
+.hero-title:hover .hero-title-line2 {
+  animation: glitch 0.3s var(--ease-cinematic);
+}
+
+@keyframes glitch {
+  0%   { transform: translate(0, 0) skewX(0deg); }
+  20%  { transform: translate(-3px, 0) skewX(-1deg); filter: hue-rotate(30deg); }
+  40%  { transform: translate(3px, 0) skewX(1deg); }
+  60%  { transform: translate(-2px, 0) skewX(0deg); }
+  80%  { transform: translate(2px, 0); filter: hue-rotate(0deg); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ─── SCI-FI CAMERA VIEWPORT ────────────────────── */
+.camera-viewport {
+  background: #020408;
+}
+
+/* Animated cyan border on active camera */
+.camera-viewport.active {
+  border-color: transparent;
+  background: linear-gradient(#020408, #020408) padding-box,
+    linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-blue), var(--accent-cyan)) border-box;
+  border: 1.5px solid transparent;
+  animation: borderRotate 4s linear infinite;
+}
+
+@keyframes borderRotate {
+  0%   { background: linear-gradient(#020408, #020408) padding-box, linear-gradient(0deg,   var(--accent-cyan), var(--accent-purple)) border-box; }
+  25%  { background: linear-gradient(#020408, #020408) padding-box, linear-gradient(90deg,  var(--accent-cyan), var(--accent-purple)) border-box; }
+  50%  { background: linear-gradient(#020408, #020408) padding-box, linear-gradient(180deg, var(--accent-cyan), var(--accent-purple)) border-box; }
+  75%  { background: linear-gradient(#020408, #020408) padding-box, linear-gradient(270deg, var(--accent-cyan), var(--accent-purple)) border-box; }
+  100% { background: linear-gradient(#020408, #020408) padding-box, linear-gradient(360deg, var(--accent-cyan), var(--accent-purple)) border-box; }
+}
+
+/* Grid overlay on inactive camera */
+.camera-placeholder {
+  background:
+    linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px),
+    radial-gradient(ellipse at center, rgba(59,130,246,0.06) 0%, transparent 70%);
+  background-size: 40px 40px, 40px 40px, cover;
+}
+
+/* ─── DETECTION DISPLAY UPGRADE ─────────────────── */
+.detection-sign {
+  font-family: var(--font-display);
+  text-shadow: 0 0 30px rgba(0,229,255,0.4), 0 0 60px rgba(0,229,255,0.15);
+}
+
+/* ─── CONFIDENCE BAR GLOW ───────────────────────── */
+.confidence-fill.high {
+  box-shadow: 0 0 10px rgba(0,229,255,0.5);
+}
+.confidence-fill.medium {
+  box-shadow: 0 0 10px rgba(245,158,11,0.4);
+}
+
+/* ─── HISTORY ITEMS HOVER ───────────────────────── */
+.history-item:hover {
+  background: linear-gradient(135deg, rgba(0,229,255,0.04), rgba(124,58,237,0.04));
+  border-color: rgba(0,229,255,0.15) !important;
+}
+
+/* ─── BUTTON ENHANCEMENTS ───────────────────────── */
+.btn-primary {
+  text-shadow: 0 0 10px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before { left: 100%; }
+
+/* ─── PRACTICE MODE UPGRADE ─────────────────────── */
+.practice-sign-display {
+  text-shadow: 0 0 40px rgba(0,229,255,0.3), 0 0 80px rgba(124,58,237,0.2);
+}
+
+/* ─── SIGN CELL HOVER GLOW ──────────────────────── */
+.sign-cell:hover {
+  box-shadow: 0 0 16px rgba(0,229,255,0.15);
+}
+
+.sign-cell-char {
+  text-shadow: 0 0 12px rgba(0,229,255,0.3);
+}
+
+/* ─── EXPRESSION RING UPGRADE ───────────────────── */
+.expression-ring {
+  filter: drop-shadow(0 0 16px rgba(0,229,255,0.2));
+}
+
+.expression-emoji {
+  filter: drop-shadow(0 0 16px rgba(0,0,0,0.6));
+}
+
+/* ─── UPGRADED HERO BADGE ───────────────────────── */
+.hero-badge {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(0,229,255,0.08);
+}
+
+/* ─── TRANSLATION TEXT GLOW ─────────────────────── */
+.translation-text:not(.empty) {
+  text-shadow: 0 0 20px rgba(255,255,255,0.04);
+}
+
+/* ─── SECTION LABELS UPGRADE ────────────────────── */
+.section-label {
+  color: var(--accent-cyan);
+  opacity: 0.7;
+}
+
+/* ─── FOOTER UPGRADE ─────────────────────────────── */
+.footer {
+  background: linear-gradient(to top, rgba(0,229,255,0.025), transparent);
+  border-top: 1px solid rgba(0,229,255,0.08);
+}
+
+/* ─── SPLASH UPGRADE ─────────────────────────────── */
+.splash-logo-ring {
+  box-shadow: 0 0 0 8px rgba(0,229,255,0.04), 0 0 40px rgba(0,229,255,0.1);
+}
+
+/* ─── TOAST UPGRADE ──────────────────────────────── */
+.toast {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+/* ─── CORNER BRACKET GLOW ───────────────────────── */
+.corner {
+  filter: drop-shadow(0 0 4px var(--accent-cyan));
+}
+
+/* ─── NAV BRAND GLOW ─────────────────────────────── */
+.nav-brand-icon {
+  box-shadow: 0 0 16px rgba(0,229,255,0.3);
+}
+
+/* ─── REC INDICATOR UPGRADE ─────────────────────── */
+.rec-indicator {
+  font-family: var(--font-mono);
+  letter-spacing: 0.15em;
+}
+
+/* ─── UPLOAD ZONE UPGRADE ────────────────────────── */
+.upload-zone:hover {
+  box-shadow: 0 0 24px rgba(0,229,255,0.08);
+}
+
+/* ─── FACE META BADGES UPGRADE ──────────────────── */
+.face-meta-badge.visible {
+  box-shadow: 0 0 12px rgba(0,229,255,0.08);
+}
+
+/* ─── SCROLLBAR UPGRADE ──────────────────────────── */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
+}
+
+/* ─── MOBILE NAV KESTFORD BUTTON ────────────────── */
+@media (max-width: 768px) {
+  .nav-kestford-label { display: none; }
+  .nav-kestford-btn   { padding: 8px 10px; }
+  .nav-status-text    { display: none; }
+}
+
+@media (max-width: 480px) {
+  .nav-kestford-btn { gap: 4px; }
+}
