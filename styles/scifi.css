@@ -319,3 +319,596 @@ body::before {
 @media (max-width: 480px) {
   .nav-kestford-btn { gap: 4px; }
 }
+
+/* ═══════════════════════════════════════════════════
+   Responsive compatibility patch
+   Keeps the existing visual design while making the UI usable on
+   small portrait screens, short landscape screens, and desktop.
+   ═══════════════════════════════════════════════════ */
+:root {
+  --font-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Android Emoji", "EmojiSymbols", sans-serif;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  min-width: 0;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.nav-brand-icon,
+.nav-kestford-icon,
+.nav-kestford-arrow,
+.card-title-icon,
+.camera-placeholder-icon,
+.btn-icon,
+.upload-icon,
+.privacy-icon,
+.expression-emoji,
+.expr-emoji-sm,
+.no-face-icon,
+.splash-logo-inner,
+.toast span:first-child,
+.history-sign,
+.sign-cell-char {
+  font-family: var(--font-emoji);
+  line-height: 1;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn,
+.nav-link,
+.practice-cat,
+.select,
+.translation-text,
+.privacy-text,
+.card-title,
+.nav-status {
+  min-width: 0;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+.camera-feed,
+.camera-overlay-canvas,
+.face-canvas-layer {
+  object-fit: cover;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .btn,
+  .nav-link,
+  .practice-cat,
+  .select,
+  .upload-zone,
+  .sign-cell {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav {
+    flex-wrap: wrap;
+    gap: 10px 12px;
+    padding: calc(12px + env(safe-area-inset-top)) 16px 12px;
+  }
+
+  .nav-brand {
+    flex: 0 0 auto;
+  }
+
+  .nav-actions {
+    margin-left: auto;
+    gap: 8px;
+  }
+
+  .nav-links {
+    order: 3;
+    display: flex;
+    flex: 0 0 100%;
+    width: 100%;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 2px 2px 4px;
+    margin: 0 -2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-link {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .main-app {
+    padding-top: 124px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero {
+    padding: 32px 0 22px;
+  }
+
+  .hero-title {
+    font-size: clamp(42px, 13vw, 76px);
+  }
+
+  .hero-subtitle {
+    max-width: 92vw;
+  }
+
+  .glass-card,
+  .camera-viewport,
+  .privacy-notice {
+    border-radius: clamp(14px, 4vw, var(--radius-xl));
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .nav-brand-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .nav-brand-name {
+    font-size: 21px;
+    letter-spacing: 0.08em;
+  }
+
+  .nav-kestford-btn {
+    min-width: 40px;
+    height: 38px;
+    padding: 8px 10px;
+  }
+
+  .nav-kestford-arrow {
+    display: none;
+  }
+
+  .nav-status {
+    height: 38px;
+    padding: 6px 10px;
+  }
+
+  .main-app {
+    padding-top: 118px;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  .hero-badge {
+    max-width: 100%;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    white-space: normal;
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: clamp(38px, 15vw, 58px);
+    line-height: 0.95;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .workspace {
+    gap: 16px;
+    padding-bottom: 28px;
+  }
+
+  .card-header {
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .card-title {
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    overflow-wrap: anywhere;
+  }
+
+  .camera-section {
+    gap: 12px;
+  }
+
+  .camera-viewport {
+    aspect-ratio: 3 / 4;
+    min-height: 280px;
+    max-height: min(70vh, 520px);
+  }
+
+  .camera-placeholder {
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .camera-placeholder-icon {
+    font-size: 48px;
+  }
+
+  .camera-placeholder-text,
+  .gesture-hint,
+  .rec-indicator {
+    font-size: 11px;
+  }
+
+  .gesture-hint {
+    left: 12px;
+    right: 12px;
+    transform: none;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .camera-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .camera-controls .select-wrapper {
+    width: auto !important;
+    flex: auto !important;
+  }
+
+  .camera-controls .btn,
+  .camera-controls .select {
+    width: 100%;
+  }
+
+  .camera-controls .btn-icon {
+    width: 100%;
+    height: auto;
+    min-height: 44px;
+  }
+
+  .btn {
+    padding: 11px 12px;
+    font-size: 12px;
+  }
+
+  .btn-icon {
+    min-width: 42px;
+  }
+
+  .translation-output,
+  .detection-display,
+  .confidence-wrapper,
+  .tts-panel,
+  .practice-target,
+  .practice-feedback,
+  .practice-score {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .translation-actions,
+  .practice-nav {
+    flex-wrap: wrap;
+  }
+
+  .translation-text {
+    font-size: 17px;
+  }
+
+  .detection-sign {
+    min-height: 76px;
+    font-size: clamp(54px, 22vw, 74px);
+  }
+
+  .expression-ring {
+    width: 104px;
+    height: 104px;
+  }
+
+  .expression-emoji {
+    font-size: 46px;
+  }
+
+  .expr-row {
+    grid-template-columns: 24px 72px minmax(0, 1fr) 34px;
+    gap: 6px;
+  }
+
+  .sign-grid {
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 7px;
+    padding: 12px;
+  }
+
+  .upload-zone {
+    margin: 16px;
+    padding: 30px 18px;
+  }
+
+  .privacy-notice {
+    padding: 14px 16px;
+  }
+
+  .toast {
+    left: 12px;
+    right: 12px;
+    bottom: calc(18px + env(safe-area-inset-bottom));
+    transform: translateY(80px);
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .toast.visible {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 360px) {
+  .nav {
+    gap: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .nav-brand-name {
+    font-size: 18px;
+  }
+
+  .nav-brand-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .nav-status {
+    padding: 6px 8px;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+
+  .hero {
+    padding-top: 24px;
+  }
+
+  .camera-viewport {
+    min-height: 250px;
+  }
+
+  .camera-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tabs,
+  .practice-cats,
+  .sign-grid {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .expr-row {
+    grid-template-columns: 22px 66px minmax(0, 1fr) 32px;
+  }
+}
+
+@media (max-width: 220px), (max-height: 220px) {
+  .splash-title,
+  .splash-tagline,
+  .hero,
+  .nav-brand-name,
+  .nav-kestford-label,
+  .nav-kestford-arrow,
+  .nav-status,
+  .privacy-notice,
+  .footer {
+    display: none !important;
+  }
+
+  .nav {
+    position: sticky;
+    padding: 6px;
+    gap: 6px;
+  }
+
+  .nav-links {
+    display: flex;
+    order: 2;
+    flex: 1 1 100%;
+    gap: 4px;
+    overflow-x: auto;
+  }
+
+  .nav-link,
+  .btn,
+  .select,
+  .practice-cat {
+    min-height: 30px;
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .main-app {
+    padding-top: 0;
+  }
+
+  .container {
+    padding: 4px;
+  }
+
+  .workspace,
+  .camera-section,
+  .translation-stack,
+  .sidebar {
+    gap: 6px;
+  }
+
+  .glass-card,
+  .camera-viewport {
+    border-radius: 10px;
+  }
+
+  .card-header {
+    padding: 8px;
+  }
+
+  .card-title {
+    font-size: 9px;
+  }
+
+  .camera-viewport {
+    min-height: 90px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .camera-placeholder-icon,
+  .no-face-icon,
+  .upload-icon {
+    font-size: 24px;
+  }
+
+  .camera-placeholder-text,
+  .gesture-hint,
+  .rec-indicator {
+    display: none;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .nav {
+    padding-top: calc(8px + env(safe-area-inset-top));
+    padding-bottom: 8px;
+  }
+
+  .main-app {
+    padding-top: 76px;
+  }
+
+  .nav-links {
+    order: 0;
+    flex: 1 1 auto;
+    width: auto;
+    overflow-x: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+
+  .hero {
+    padding: 16px 0 14px;
+  }
+
+  .hero-title {
+    font-size: clamp(34px, 7vw, 56px);
+    margin-bottom: 10px;
+  }
+
+  .hero-subtitle {
+    display: none;
+  }
+
+  .hero-badge {
+    margin-bottom: 12px;
+  }
+
+  .workspace {
+    gap: 14px;
+  }
+
+  .camera-viewport {
+    aspect-ratio: 16 / 9;
+    min-height: 180px;
+    max-height: calc(100vh - 170px);
+  }
+
+  .card-header {
+    padding: 12px 16px;
+  }
+
+  .detection-display {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .footer {
+    padding: 18px 24px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) and (min-width: 600px) {
+  .workspace {
+    grid-template-columns: minmax(300px, 1fr) minmax(250px, 320px);
+  }
+}
+
+@media (min-width: 901px) {
+  .nav-links {
+    min-width: 0;
+  }
+
+  .nav-link {
+    white-space: nowrap;
+  }
+}

@@ -1,7 +1,7 @@
 {
   "name": "SignAI — ASL Sign Language & Emotion Translator",
   "short_name": "SignAI",
-  "description": "Real-time ASL sign language translation and face emotion detection. 100% on-device AI — no data ever leaves your browser.",
+  "description": "Real-time ASL sign language translation and face emotion detection. 100% on-device AI — no data leaves your browser.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#03040a",
@@ -11,8 +11,8 @@
   "categories": ["accessibility", "education", "utilities"],
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='80' fill='%2303040a'/><text y='.85em' font-size='380' x='66'>🤟</text></svg>",
-      "sizes": "512x512",
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
@@ -31,14 +31,14 @@
       "short_name": "Translate",
       "description": "Open the sign language translator",
       "url": "./#translate",
-      "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤟</text></svg>", "sizes": "96x96" }]
+      "icons": [{ "src": "assets/icons/shortcut-translate.svg", "sizes": "96x96", "type": "image/svg+xml" }]
     },
     {
       "name": "Face Emotions",
       "short_name": "Emotions",
       "description": "Open the face emotion detector",
       "url": "./#face",
-      "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>😊</text></svg>", "sizes": "96x96" }]
+      "icons": [{ "src": "assets/icons/shortcut-emotions.svg", "sizes": "96x96", "type": "image/svg+xml" }]
     }
   ]
 }

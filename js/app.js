@@ -85,7 +85,7 @@ function Nav({ currentTab, onTab, cameraActive }) {
           </button>
         ))}
       </div>
-      <div style={{ display:'flex', alignItems:'center', gap:12 }}>
+      <div className="nav-actions">
         <a
           href="https://www.kestford.com"
           target="_blank"
