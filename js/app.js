@@ -73,10 +73,10 @@ function Nav({ currentTab, onTab, cameraActive }) {
       </div>
       <div className="nav-links" role="tablist">
         {[
-          { id: 'translate', label: 'Translate'   },
-          { id: 'face',      label: '😊 Emotions'  },
-          { id: 'practice',  label: 'Practice'    },
-          { id: 'guide',     label: 'Sign Guide'  },
+          { id: 'translate', label: 'Translate'  },
+          { id: 'face',      label: '😊 Emotions' },
+          { id: 'practice',  label: 'Practice'   },
+          { id: 'guide',     label: 'Sign Guide' },
         ].map(({ id, label }) => (
           <button key={id}
             className={`nav-link ${currentTab === id ? 'active' : ''}`}
@@ -85,9 +85,22 @@ function Nav({ currentTab, onTab, cameraActive }) {
           </button>
         ))}
       </div>
-      <div className="nav-status" aria-live="polite">
-        <span className={`nav-status-dot ${cameraActive ? 'active' : ''}`}></span>
-        <span>{cameraActive ? 'Camera Active' : 'Camera Off'}</span>
+      <div style={{ display:'flex', alignItems:'center', gap:12 }}>
+        <a
+          href="https://www.kestford.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-kestford-btn"
+          aria-label="Explore our other projects at KestFord"
+        >
+          <span className="nav-kestford-icon">⬡</span>
+          <span className="nav-kestford-label">Explore Projects</span>
+          <span className="nav-kestford-arrow">↗</span>
+        </a>
+        <div className="nav-status" aria-live="polite">
+          <span className={`nav-status-dot ${cameraActive ? 'active' : ''}`}></span>
+          <span className="nav-status-text">{cameraActive ? 'Live' : 'Off'}</span>
+        </div>
       </div>
     </nav>
   );
