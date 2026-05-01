@@ -1,0 +1,258 @@
+/* ═══════════════════════════════════════════════════
+   SignAI — Face Expression Styles (appended)
+   ═══════════════════════════════════════════════════ */
+
+/* ─── FACE PANEL LAYOUT ─────────────────────────── */
+.face-panel {
+  position: relative;
+}
+
+/* Expression ring / badge */
+.expression-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 24px 20px;
+  position: relative;
+}
+
+.expression-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.expression-ring-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.expression-ring-track {
+  fill: none;
+  stroke: rgba(255,255,255,0.05);
+  stroke-width: 4;
+}
+
+.expression-ring-fill {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.16,1,0.3,1),
+              stroke 0.4s ease;
+}
+
+.expression-emoji {
+  font-size: 52px;
+  line-height: 1;
+  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  filter: drop-shadow(0 0 12px rgba(0,0,0,0.5));
+  animation: emojiPop 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+@keyframes emojiPop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  60%  { transform: scale(1.15); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.expression-label {
+  font-family: var(--font-display);
+  font-size: 36px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin-bottom: 4px;
+  transition: color 0.3s;
+}
+
+.expression-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ─── ALL EXPRESSIONS BARS ──────────────────────── */
+.expression-bars {
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.expr-row {
+  display: grid;
+  grid-template-columns: 28px 84px 1fr 36px;
+  align-items: center;
+  gap: 8px;
+}
+
+.expr-emoji-sm { font-size: 16px; text-align: center; }
+
+.expr-name {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.expr-bar-track {
+  height: 5px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.expr-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.4s var(--ease-out-expo), background 0.4s;
+}
+
+.expr-pct {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* ─── AGE / GENDER BADGE ────────────────────────── */
+.face-meta {
+  display: flex;
+  gap: 8px;
+  padding: 0 20px 16px;
+  flex-wrap: wrap;
+}
+
+.face-meta-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  transition: all 0.3s;
+}
+
+.face-meta-badge.visible {
+  border-color: var(--border-subtle);
+  color: var(--text-primary);
+}
+
+/* ─── NO FACE STATE ─────────────────────────────── */
+.no-face-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px;
+  gap: 10px;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.no-face-icon {
+  font-size: 40px;
+  opacity: 0.3;
+  animation: floatY 3s ease-in-out infinite;
+}
+
+/* ─── FACE CANVAS OVERLAY ───────────────────────── */
+.face-overlay-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(-1);
+  pointer-events: none;
+}
+
+/* ─── EXPRESSION HISTORY CHIPS ───────────────────── */
+.expr-history {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 20px 16px;
+}
+
+.expr-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  animation: slideIn 0.3s var(--ease-out-expo) both;
+}
+
+/* ─── TOGGLE FACE MODE BUTTON ────────────────────── */
+.face-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(59,130,246,0.1));
+  border: 1px solid rgba(124,58,237,0.25);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out-expo);
+}
+
+.face-toggle-btn:hover {
+  background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(59,130,246,0.2));
+  border-color: rgba(124,58,237,0.45);
+  box-shadow: 0 4px 20px rgba(124,58,237,0.2);
+  transform: translateY(-1px);
+}
+
+.face-toggle-btn.active {
+  background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(59,130,246,0.2));
+  border-color: rgba(124,58,237,0.6);
+}
+
+/* ─── DUAL MODE LAYOUT ──────────────────────────── */
+.dual-canvas-wrapper {
+  position: relative;
+}
+
+/* When face mode is active, show second overlay on same video */
+.face-canvas-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(-1);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ─── EXPRESSION COLOR MAP (CSS custom props) ────── */
+.expr-happy     { --expr-color: #f59e0b; }
+.expr-sad       { --expr-color: #3b82f6; }
+.expr-angry     { --expr-color: #ef4444; }
+.expr-fearful   { --expr-color: #8b5cf6; }
+.expr-disgusted { --expr-color: #10b981; }
+.expr-surprised { --expr-color: #00e5ff; }
+.expr-neutral   { --expr-color: #8b99b8; }
