@@ -1,68 +1,266 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="SignAI — Real-time ASL Sign Language Translator. Translate sign language gestures into text using your camera. Private, on-device AI." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- ═══════════════════════════════════════════════
+       PRIMARY META TAGS
+       ═══════════════════════════════════════════════ -->
+  <title>SignAI — Real-Time ASL Sign Language & Face Emotion Translator</title>
+  <meta name="title"       content="SignAI — Real-Time ASL Sign Language & Face Emotion Translator" />
+  <meta name="description" content="SignAI translates ASL sign language gestures and detects facial expressions in real time using your camera. 100% private — all AI runs on your device. No data sent anywhere." />
+  <meta name="keywords"    content="sign language translator, ASL translator, face expression detection, emotion recognition, real-time sign language, AI sign language, MediaPipe hands, face API, accessibility tool, deaf communication, hand gesture recognition, ASL alphabet, sign language AI, on-device AI, browser AI" />
+  <meta name="author"      content="SignAI" />
+  <meta name="robots"      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="language"    content="English" />
   <meta name="theme-color" content="#03040a" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="application-name" content="SignAI" />
+  <meta name="generator"   content="SignAI v2.0" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="SignAI — AI Sign Language Translator" />
-  <meta property="og:description" content="Translate ASL signs into text in real time. No data leaves your device." />
-  <meta property="og:type" content="website" />
+  <!-- ═══════════════════════════════════════════════
+       CANONICAL
+       ═══════════════════════════════════════════════ -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="canonical" href="https://yourusername.github.io/signai-translator/" />
 
-  <title>SignAI — AI Sign Language Translator</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤟</text></svg>" />
+  <!-- ═══════════════════════════════════════════════
+       OPEN GRAPH (Facebook / LinkedIn / WhatsApp)
+       ═══════════════════════════════════════════════ -->
+  <meta property="og:type"         content="website" />
+  <meta property="og:url"          content="https://yourusername.github.io/signai-translator/" />
+  <meta property="og:title"        content="SignAI — Real-Time ASL Sign Language & Face Emotion Translator" />
+  <meta property="og:description"  content="Translate ASL signs and detect facial expressions instantly in your browser. All AI processing is on-device. No camera data ever leaves your device." />
+  <meta property="og:image"        content="https://yourusername.github.io/signai-translator/og-image.png" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"    content="SignAI — AI Sign Language and Emotion Translator" />
+  <meta property="og:site_name"    content="SignAI" />
+  <meta property="og:locale"       content="en_US" />
 
-  <!-- Fonts -->
+  <!-- ═══════════════════════════════════════════════
+       TWITTER / X CARD
+       ═══════════════════════════════════════════════ -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:url"         content="https://yourusername.github.io/signai-translator/" />
+  <meta name="twitter:title"       content="SignAI — Real-Time ASL Sign Language & Face Emotion Translator" />
+  <meta name="twitter:description" content="Translate ASL signs + detect facial expressions in real time. 100% on-device AI — no data leaves your browser." />
+  <meta name="twitter:image"       content="https://yourusername.github.io/signai-translator/og-image.png" />
+  <meta name="twitter:image:alt"   content="SignAI — AI Sign Language and Emotion Translator" />
+  <meta name="twitter:creator"     content="@yourtwitterhandle" />
+  <meta name="twitter:site"        content="@yourtwitterhandle" />
+
+  <!-- ═══════════════════════════════════════════════
+       PWA / MOBILE
+       ═══════════════════════════════════════════════ -->
+  <meta name="mobile-web-app-capable"       content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title"  content="SignAI" />
+  <meta name="msapplication-TileColor"     content="#03040a" />
+  <meta name="msapplication-navbutton-color" content="#00e5ff" />
+
+  <!-- ═══════════════════════════════════════════════
+       FAVICON / ICONS
+       ═══════════════════════════════════════════════ -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤟</text></svg>" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2303040a'/><text y='.9em' font-size='80'>🤟</text></svg>" />
+
+  <!-- ═══════════════════════════════════════════════
+       JSON-LD STRUCTURED DATA
+       ═══════════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://yourusername.github.io/signai-translator/#webapp",
+        "name": "SignAI",
+        "description": "Real-time ASL sign language translator and face emotion detector that runs entirely in your browser using on-device AI. Supports A-Z alphabet, numbers 0-9, and 15+ common signs. Also detects happy, sad, angry, surprised, fearful, disgusted, and neutral facial expressions.",
+        "url": "https://yourusername.github.io/signai-translator/",
+        "applicationCategory": "AccessibilityApplication",
+        "operatingSystem": "Any (Browser-based)",
+        "browserRequirements": "Requires a modern browser with camera access (Chrome, Firefox, Edge, Safari)",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Real-time ASL sign language recognition",
+          "A-Z alphabet detection",
+          "0-9 number detection",
+          "15+ common sign words",
+          "Real-time face expression detection",
+          "7 emotion categories: Happy, Sad, Angry, Fearful, Disgusted, Surprised, Neutral",
+          "Age and gender estimation",
+          "Text-to-speech output",
+          "Practice mode with accuracy scoring",
+          "Photo upload and analysis",
+          "Translation history",
+          "100% on-device processing — no data transmitted",
+          "Fully accessible keyboard navigation"
+        ],
+        "screenshot": "https://yourusername.github.io/signai-translator/og-image.png",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "accessibilityFeature": [
+          "highContrast",
+          "textToSpeech",
+          "signLanguageSupport",
+          "captions"
+        ],
+        "accessibilityHazard": "none",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Deaf and hard of hearing individuals, ASL learners, accessibility professionals, educators"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://yourusername.github.io/signai-translator/#website",
+        "name": "SignAI",
+        "url": "https://yourusername.github.io/signai-translator/",
+        "description": "AI-powered sign language translator and emotion detector",
+        "inLanguage": "en",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://yourusername.github.io/signai-translator/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://yourusername.github.io/signai-translator/#software",
+        "name": "SignAI — ASL Sign Language Translator",
+        "applicationCategory": "UtilitiesApplication",
+        "applicationSubCategory": "Accessibility",
+        "operatingSystem": "Web Browser",
+        "releaseNotes": "Version 2.0: Added real-time face expression detection with 7 emotion categories, age estimation, and gender detection.",
+        "softwareVersion": "2.0.0",
+        "author": {
+          "@type": "Person",
+          "name": "SignAI Developer"
+        },
+        "keywords": "ASL, sign language, face emotion, accessibility, AI, machine learning, MediaPipe, real-time"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://yourusername.github.io/signai-translator/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does SignAI store my camera footage?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All AI processing (sign detection and face emotion recognition) runs entirely on your device in the browser. No video, images, or biometric data are ever recorded, transmitted, or stored anywhere."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which sign languages does SignAI support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SignAI currently supports American Sign Language (ASL) including the full A-Z alphabet, numbers 0-9, and 15+ common words. More sign languages (BSL, ISL) are planned for future updates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What facial expressions can SignAI detect?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SignAI detects 7 facial expressions in real time: Happy, Sad, Angry, Fearful, Disgusted, Surprised, and Neutral. It also estimates approximate age and gender."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does SignAI work on mobile devices?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. SignAI is fully responsive and works on iOS and Android using any modern mobile browser. You can switch between front and back cameras."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is SignAI free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, SignAI is completely free and open-source. There are no subscriptions, no sign-ups, and no costs."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- ═══════════════════════════════════════════════
+       FONTS
+       ═══════════════════════════════════════════════ -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" />
 
-  <!-- Styles -->
+  <!-- ═══════════════════════════════════════════════
+       STYLES
+       ═══════════════════════════════════════════════ -->
   <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/face.css" />
 </head>
 <body>
 
-  <!-- Three.js 3D Background Canvas -->
+  <!-- Three.js 3D Animated Background -->
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-  <!-- React Root -->
+  <!-- React App Root -->
   <div id="root"></div>
+
+  <!-- Skip navigation link for accessibility -->
+  <a href="#root" class="sr-only">Skip to main content</a>
 
   <!-- ═══════════════════════════════════════════════
        EXTERNAL LIBRARIES
        ═══════════════════════════════════════════════ -->
 
-  <!-- Three.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Three.js r128 — 3D background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
 
   <!-- React 18 -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
-  <!-- Babel (JSX transform in browser) -->
+  <!-- Babel standalone — JSX in browser -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <!-- MediaPipe Hands -->
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <!-- MediaPipe Hands — hand landmark tracking -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"  crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"                crossorigin="anonymous"></script>
+
+  <!-- face-api.js — face detection + expression recognition + age/gender -->
+  <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"  crossorigin="anonymous"></script>
 
   <!-- ═══════════════════════════════════════════════
-       APP SCRIPTS (order matters)
+       APP SCRIPTS — ORDER MATTERS
        ═══════════════════════════════════════════════ -->
 
-  <!-- Sign language database -->
+  <!-- 1. Sign language database -->
   <script src="js/signs-data.js"></script>
 
-  <!-- Gesture classifier (must load after signs-data) -->
+  <!-- 2. Hand gesture classifier (depends on signs-data) -->
   <script src="js/classifier.js"></script>
 
-  <!-- Three.js animated background (runs after DOM ready) -->
+  <!-- 3. Face expression detector (depends on face-api.js) -->
+  <script src="js/face-detector.js"></script>
+
+  <!-- 4. Three.js animated 3D background -->
   <script src="js/background.js"></script>
 
-  <!-- Main React app (JSX — transpiled by Babel) -->
+  <!-- 5. Main React application (JSX, transpiled by Babel) -->
   <script type="text/babel" src="js/app.js"></script>
 
 </body>
